@@ -1,11 +1,14 @@
 const n_numbers = 6;
 var input = "";
 var mysteryNumber = generateMysteryNumber();
-console.log(mysteryNumber);
+var turn = 5;
 let gamecheck = false;
+
+console.log(mysteryNumber);
 
 document.addEventListener('keydown', (event) => {
     let key = event.key;
+
     if(gamecheck || key == " "){
         input = "";
         clearBoxNumbres();
@@ -15,7 +18,8 @@ document.addEventListener('keydown', (event) => {
         input += key;
         updateBoxNumebrs();
     }
-    if(input.length === n_numbers){
+    if(input.length === n_numbers && turn != 0){
+        takeTurn();
         game();
         gamecheck = true;
     }
@@ -101,4 +105,19 @@ function imprimirArray(arr){
         res += x + " "; 
     });
     console.log(res);
+}
+function equals_numbers(str){
+    let n = str.split("");
+    let w = n[0];
+    for(let i of n)
+      if(i !== w)
+      return false;
+    return true;
+}
+
+function takeTurn(){
+    if(turn > 0){
+        this.turn -= 1;
+        document.getElementById("num_turn").innerHTML = turn;
+    }
 }

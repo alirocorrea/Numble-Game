@@ -4,10 +4,6 @@
     box-sizing: content-box;
 }
 
-html{
-    background-color: gainsboro;
-}
-
 .boxnum{
     height: 60px;
     width: 60px;
@@ -18,13 +14,13 @@ html{
 }
 
 .box-green{
-    background-color: green!important;
+    background-color: #51CB20!important;
 }
 
 .box-yellow{
-    background-color: khaki!important;
+    background-color: #f1ff6f!important;
 }
 
 .box-gray{
-    background-color: gray!important;
+    background-color: #a0a0a0!important;
 }
