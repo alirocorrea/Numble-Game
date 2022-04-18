@@ -118,6 +118,6 @@ function equals_numbers(str){
 function takeTurn(){
     if(turn > 0){
         this.turn -= 1;
-        document.getElementById("num_turn").innerHTML = turn;
+        document.getElementById("num-turn").innerHTML = turn;
     }
 }
