@@ -8,18 +8,22 @@ console.log(mysteryNumber);
 
 document.addEventListener('keydown', (event) => {
     let key = event.key;
-
+    
+    if(turn == 0) {return}
+    
     if(gamecheck || key == " "){
         input = "";
         clearBoxNumbres();
         gamecheck = false;
     }
+
     if(key.match("[0-9]") && input.length < n_numbers){
         input += key;
         updateBoxNumebrs();
     }
-    if(input.length === n_numbers && turn != 0){
+    if(input.length === n_numbers){
         takeTurn();
+        validateReloadGame();
         game();
         gamecheck = true;
     }
@@ -97,6 +101,7 @@ function setGray(boxnumber){
 function clearBoxClass(boxnumber){
     document.getElementById("boxn-" + boxnumber).className = "";
     document.getElementById("boxn-" + boxnumber).classList.add("boxnum");
+    document.getElementById("boxn-" + boxnumber).classList.add("m-2");
 }
 
 function imprimirArray(arr){
@@ -119,5 +124,12 @@ function takeTurn(){
     if(turn > 0){
         this.turn -= 1;
         document.getElementById("num-turn").innerHTML = turn;
+    }
+}
+
+function validateReloadGame(){
+    if(this.turn == 0){
+        console.log("Set Button");
+        document.getElementById("btn-reload").classList.remove("hidden-element");
     }
 }
