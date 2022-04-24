@@ -12,6 +12,11 @@
     text-align: center;
     font-weight: 600;
     border: 1PX solid gray;
+    transition: 100ms;
+}
+
+@keyframes pop{
+    50%  {transform: scale(1.1);}
 }
 
 .box-green{
@@ -80,4 +85,9 @@
 
 .box-keyboard:active{
     background-color: gray;
+}
+
+.pulse-input{
+    animation: pop 200ms linear 1;
+    border: 1px solid black!important;
 }

@@ -43,6 +43,7 @@ function updateBoxNumebrs(){
     numbers.forEach(number =>{
         let id =  "boxn-" + position;
         document.getElementById(id).innerHTML = number;
+        animateInput(position);
         position++;
     });
 }
@@ -51,6 +52,7 @@ function clearBoxNumbres(){
     for(let i = 1 ; i <= n_numbers; i++){
         let id =  "boxn-" + i;
         document.getElementById(id).innerHTML = "";
+        clearAnimateInput(i);
     }
 }
 
@@ -83,7 +85,7 @@ function game(){
         }
     }
     if(countOk == n_numbers)
-        alert("Felicitaciones");
+        winGame();
 }
 
 function setGreen(boxnumber){
@@ -139,4 +141,17 @@ function validateReloadGame(){
 
 function pressKeyboard(key){
     inputKey(key.toString());
+}
+
+function animateInput(boxnumber){
+    document.getElementById("boxn-" + boxnumber).classList.remove("pulse-input");
+    document.getElementById("boxn-" + boxnumber).classList.add("pulse-input");
+}
+
+function clearAnimateInput(boxnumber){
+    document.getElementById("boxn-" + boxnumber).classList.remove("pulse-input");
+}
+
+async function winGame(){
+    alert("Felicitaciones");
 }
