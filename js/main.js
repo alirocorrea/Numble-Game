@@ -8,7 +8,10 @@ console.log(mysteryNumber);
 
 document.addEventListener('keydown', (event) => {
     let key = event.key;
-    
+    inputKey(key);
+}, false);
+
+function inputKey(key){
     if(turn == 0) {return}
     
     if(gamecheck || key == " "){
@@ -31,7 +34,7 @@ document.addEventListener('keydown', (event) => {
         input = input.slice(0,-1);
         updateBoxNumebrs();
     }
-}, false);
+}
 
 function updateBoxNumebrs(){
     clearBoxNumbres();
@@ -115,8 +118,8 @@ function equals_numbers(str){
     let n = str.split("");
     let w = n[0];
     for(let i of n)
-      if(i !== w)
-      return false;
+        if(i !== w)
+            return false;
     return true;
 }
 
@@ -132,4 +135,8 @@ function validateReloadGame(){
         console.log("Set Button");
         document.getElementById("btn-reload").classList.remove("hidden-element");
     }
+}
+
+function pressKeyboard(key){
+    inputKey(key.toString());
 }
