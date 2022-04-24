@@ -1,4 +1,4 @@
 ## Numble
-Simple numbers game.
+Simple numbers game. Mobile version available.
 
 Play now: https://alirocorrea.github.io/Numble/
