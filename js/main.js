@@ -1,7 +1,7 @@
 const n_numbers = 6;
 var input = "";
 var mysteryNumber = generateMysteryNumber();
-var turn = 5;
+var turn = 100;
 let gamecheck = false;
 
 console.log(mysteryNumber);
@@ -66,29 +66,34 @@ function generateMysteryNumber(){
 
 function game(){
     let actual = input.split("");
-    let expected = mysteryNumber.split(""); 
+    let expected = mysteryNumber.split("");
     let countOk = 0;
-    for(let i = 0; i < n_numbers; i++){
-        let boxnumber = i + 1;
-        if(expected[i] == actual[i]){
-            setGreen(boxnumber);
-            expected[i] = "";
-            countOk++;
-        }else{
-            setGray(boxnumber)
-        }
-    }
-    for(let i = 0; i < n_numbers; i++){
-        let boxnumber = i + 1;
-        if(expected.indexOf(actual[i]) >= 0){
-            setYellow(boxnumber);
-            expected[expected.indexOf(actual[i])] = "";
-        }
-    }
-    animateBox();
     
-    if(countOk == n_numbers)
-        winGame();
+    for(let i = 0; i < n_numbers; i++){
+        let box = i + 1;
+        if(actual[i] === expected[i]){
+            setGreen(box);
+            actual[i] = "-1"; 
+            expected[i] = "-2";
+            countOk++;
+        }else{ setGray(box); }
+    }
+
+    for(let i = 0; i < n_numbers; i++){
+        let box = i + 1;
+        if(existNumber(actual[i], expected)){
+            setYellow(box);
+            let indexExist = expected.indexOf(actual[i]);
+            expected[indexExist] = "-2";
+        }
+    }
+
+    animateBox();
+    if(countOk == n_numbers){ winGame(); }
+}
+
+function existNumber(number, arr){
+    return arr.indexOf(number) >= 0;
 }
 
 function setGreen(boxnumber){
@@ -112,13 +117,6 @@ function clearBoxClass(boxnumber){
     document.getElementById("boxn-" + boxnumber).classList.add("m-2");
 }
 
-function imprimirArray(arr){
-    let res = ""; 
-    arr.forEach(x =>{
-        res += x + " "; 
-    });
-    console.log(res);
-}
 function equals_numbers(str){
     let n = str.split("");
     let w = n[0];
@@ -159,6 +157,7 @@ function winGame(){
     animateWinGame();
     console.log("Felicitaciones");
     document.getElementById("col-turns").innerHTML = getWinElement();
+    validateReloadGame();
 }
 
 function animateBox(){
@@ -182,5 +181,5 @@ function animateWinGame(){
 }
 
 function getWinElement(){
-    return `<h5 class="display-5"> ¡Felicitaciones! Encontraste el número oculto</h5>`;
+    return `<h5 class="display-6"> ¡Felicitaciones! Encontraste el número oculto</h5>`;
 }
