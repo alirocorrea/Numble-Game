@@ -1,7 +1,7 @@
 const n_numbers = 6;
 var input = "";
 var mysteryNumber = generateMysteryNumber();
-var turn = 100;
+var turn = 5;
 let gamecheck = false;
 
 console.log(mysteryNumber);
