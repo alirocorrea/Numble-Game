@@ -54,6 +54,7 @@ function clearBoxNumbres(){
         document.getElementById(id).innerHTML = "";
         clearAnimateInput(i);
     }
+    clearAnimateBox();
 }
 
 function generateMysteryNumber(){
@@ -84,6 +85,8 @@ function game(){
             expected[expected.indexOf(actual[i])] = "";
         }
     }
+    animateBox();
+    
     if(countOk == n_numbers)
         winGame();
 }
@@ -134,7 +137,6 @@ function takeTurn(){
 
 function validateReloadGame(){
     if(this.turn == 0){
-        console.log("Set Button");
         document.getElementById("btn-reload").classList.remove("hidden-element");
     }
 }
@@ -152,6 +154,33 @@ function clearAnimateInput(boxnumber){
     document.getElementById("boxn-" + boxnumber).classList.remove("pulse-input");
 }
 
-async function winGame(){
-    alert("Felicitaciones");
+function winGame(){
+    this.turn = 0;
+    animateWinGame();
+    console.log("Felicitaciones");
+    document.getElementById("col-turns").innerHTML = getWinElement();
+}
+
+function animateBox(){
+    for(let boxnumber = 1 ; boxnumber <= n_numbers; boxnumber++){
+        document.getElementById("boxn-" + boxnumber).classList.remove("animate-box");
+        document.getElementById("boxn-" + boxnumber).classList.add("animate-box");
+    }
+}
+
+function clearAnimateBox(){
+    for(let boxnumber = 1 ; boxnumber <= n_numbers; boxnumber++){
+        document.getElementById("boxn-" + boxnumber).classList.remove("animate-box");
+    }
+}
+
+function animateWinGame(){
+    for(let boxnumber = 1 ; boxnumber <= n_numbers; boxnumber++){
+        document.getElementById("boxn-" + boxnumber).classList.add("animate-delay-" + boxnumber);
+        document.getElementById("boxn-" + boxnumber).classList.add("animate-win");
+    }
+}
+
+function getWinElement(){
+    return `<h5 class="display-5"> ¡Felicitaciones! Encontraste el número oculto</h5>`;
 }
