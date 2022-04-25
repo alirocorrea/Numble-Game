@@ -1,5 +1,6 @@
-const N_NUMBERS = 6;
-const mysteryNumber = generateMysteryNumber();
+var N_NUMBERS = 6;
+const LIMIT = 6;
+var mysteryNumber = generateMysteryNumber();
 var input = "";
 var turn = 5;
 var gamecheck = false;
@@ -128,7 +129,7 @@ function equals_numbers(str){
 function takeTurn(){
     if(turn > 0){
         this.turn -= 1;
-        document.getElementById("num-turn").innerHTML = turn;
+        updateBoxTurn();
     }
 }
 
@@ -185,4 +186,36 @@ function getWinElement(){
 
 function getBoxNumElement(boxnum){
     return `<div class="boxnum m-2" id="boxn-${boxnum}"></div>`;
+}
+
+function setConfigGame(nDigits){ 
+    if(nDigits <= 0 || nDigits > LIMIT){ return; }
+    this.N_NUMBERS = nDigits;
+    clearConfigInit();
+    setBoxNums();
+}
+
+function clearConfigInit(){
+    this.input = "";
+    this.gamecheck = false;
+    this.mysteryNumber = generateMysteryNumber();
+    console.log(mysteryNumber);
+    this.turn = 5;
+    updateBoxTurn();
+    updateTitleTextTurn();
+}
+
+function setBoxNums(){
+    document.getElementById("boxnum-container").innerHTML = "";
+    for(let i = 1 ; i <= N_NUMBERS; i++){
+        document.getElementById("boxnum-container").innerHTML += getBoxNumElement(i);
+    }
+}
+
+function updateBoxTurn(){
+    document.getElementById("num-turn").innerHTML = this.turn;
+}
+
+function updateTitleTextTurn(){
+    document.getElementById("text-turns").innerText = "Ingresa un número de " + this.N_NUMBERS + " digitos";
 }
