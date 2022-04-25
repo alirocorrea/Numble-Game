@@ -112,7 +112,7 @@ function setGray(boxnumber){
 
 function clearBoxClass(boxnumber){
     document.getElementById("boxn-" + boxnumber).className = "";
-    document.getElementById("boxn-" + boxnumber).classList.add("boxnum m-2");
+    document.getElementById("boxn-" + boxnumber).classList.add("boxnum", "m-2");
 }
 
 function takeTurn(){
