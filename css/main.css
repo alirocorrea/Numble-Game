@@ -127,6 +127,15 @@
     animation-delay: 1500ms;
 }
 
+#help-btn{
+    transition: 100ms;
+}
+
+#help-btn:hover{
+    transition: 100ms;
+    transform: scale(1.4);
+}
+
 /* Animations */
 
 @keyframes pop{
