@@ -12,7 +12,7 @@ document.addEventListener('keydown', (event) => {
 }, false);
 
 function inputKey(key){
-    if(turn == 0) {return}
+    if(turn === 0) { return; }
     
     if(gamecheck || key == " "){
         input = "";
@@ -87,7 +87,6 @@ function game(){
             expected[indexExist] = "-2";
         }
     }
-
     animateBox();
     if(countOk == N_NUMBERS){ winGame(); }
 }
@@ -113,8 +112,7 @@ function setGray(boxnumber){
 
 function clearBoxClass(boxnumber){
     document.getElementById("boxn-" + boxnumber).className = "";
-    document.getElementById("boxn-" + boxnumber).classList.add("boxnum");
-    document.getElementById("boxn-" + boxnumber).classList.add("m-2");
+    document.getElementById("boxn-" + boxnumber).classList.add("boxnum m-2");
 }
 
 function takeTurn(){
