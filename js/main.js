@@ -182,3 +182,7 @@ function animateWinGame(){
 function getWinElement(){
     return `<h5 class="display-6"> ¡Felicitaciones! Encontraste el número oculto</h5>`;
 }
+
+function getBoxNumElement(boxnum){
+    return `<div class="boxnum m-2" id="boxn-${boxnum}"></div>`;
+}
