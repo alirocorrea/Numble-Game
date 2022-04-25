@@ -1,9 +1,8 @@
-const n_numbers = 6;
+const N_NUMBERS = 6;
+const mysteryNumber = generateMysteryNumber();
 var input = "";
-var mysteryNumber = generateMysteryNumber();
 var turn = 5;
-let gamecheck = false;
-
+var gamecheck = false;
 console.log(mysteryNumber);
 
 document.addEventListener('keydown', (event) => {
@@ -20,11 +19,11 @@ function inputKey(key){
         gamecheck = false;
     }
 
-    if(key.match("[0-9]") && input.length < n_numbers){
+    if(key.match("[0-9]") && input.length < N_NUMBERS){
         input += key;
         updateBoxNumebrs();
     }
-    if(input.length === n_numbers){
+    if(input.length === N_NUMBERS){
         takeTurn();
         validateReloadGame();
         game();
@@ -49,7 +48,7 @@ function updateBoxNumebrs(){
 }
 
 function clearBoxNumbres(){
-    for(let i = 1 ; i <= n_numbers; i++){
+    for(let i = 1 ; i <= N_NUMBERS; i++){
         let id =  "boxn-" + i;
         document.getElementById(id).innerHTML = "";
         clearAnimateInput(i);
@@ -58,7 +57,7 @@ function clearBoxNumbres(){
 }
 
 function generateMysteryNumber(){
-    let min = Math.pow(10, n_numbers - 1);
+    let min = Math.pow(10, N_NUMBERS - 1);
     let max = min * 9;
     let number = Math.floor(Math.random()* max) + min;
     return number.toString();
@@ -69,7 +68,7 @@ function game(){
     let expected = mysteryNumber.split("");
     let countOk = 0;
     
-    for(let i = 0; i < n_numbers; i++){
+    for(let i = 0; i < N_NUMBERS; i++){
         let box = i + 1;
         if(actual[i] === expected[i]){
             setGreen(box);
@@ -79,7 +78,7 @@ function game(){
         }else{ setGray(box); }
     }
 
-    for(let i = 0; i < n_numbers; i++){
+    for(let i = 0; i < N_NUMBERS; i++){
         let box = i + 1;
         if(existNumber(actual[i], expected)){
             setYellow(box);
@@ -89,7 +88,7 @@ function game(){
     }
 
     animateBox();
-    if(countOk == n_numbers){ winGame(); }
+    if(countOk == N_NUMBERS){ winGame(); }
 }
 
 function existNumber(number, arr){
@@ -161,20 +160,20 @@ function winGame(){
 }
 
 function animateBox(){
-    for(let boxnumber = 1 ; boxnumber <= n_numbers; boxnumber++){
+    for(let boxnumber = 1 ; boxnumber <= N_NUMBERS; boxnumber++){
         document.getElementById("boxn-" + boxnumber).classList.remove("animate-box");
         document.getElementById("boxn-" + boxnumber).classList.add("animate-box");
     }
 }
 
 function clearAnimateBox(){
-    for(let boxnumber = 1 ; boxnumber <= n_numbers; boxnumber++){
+    for(let boxnumber = 1 ; boxnumber <= N_NUMBERS; boxnumber++){
         document.getElementById("boxn-" + boxnumber).classList.remove("animate-box");
     }
 }
 
 function animateWinGame(){
-    for(let boxnumber = 1 ; boxnumber <= n_numbers; boxnumber++){
+    for(let boxnumber = 1 ; boxnumber <= N_NUMBERS; boxnumber++){
         document.getElementById("boxn-" + boxnumber).classList.add("animate-delay-" + boxnumber);
         document.getElementById("boxn-" + boxnumber).classList.add("animate-win");
     }
