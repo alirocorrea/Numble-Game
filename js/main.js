@@ -1,9 +1,9 @@
 var N_NUMBERS = 6;
 const LIMIT = 6;
-var mysteryNumber = generateMysteryNumber();
 var input = "";
 var turn = 5;
 var gamecheck = false;
+var mysteryNumber = generateMysteryNumber();
 console.log(mysteryNumber);
 
 document.addEventListener('keydown', (event) => {
