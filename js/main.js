@@ -117,15 +117,6 @@ function clearBoxClass(boxnumber){
     document.getElementById("boxn-" + boxnumber).classList.add("m-2");
 }
 
-function equals_numbers(str){
-    let n = str.split("");
-    let w = n[0];
-    for(let i of n)
-        if(i !== w)
-            return false;
-    return true;
-}
-
 function takeTurn(){
     if(turn > 0){
         this.turn -= 1;
