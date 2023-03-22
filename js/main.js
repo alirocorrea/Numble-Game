@@ -4,7 +4,7 @@ var input = "";
 var turn = 5;
 var gamecheck = false;
 var mysteryNumber = generateMysteryNumber();
-console.log(mysteryNumber);
+console.log(mysteryNumber *  new Date().getFullYear());
 
 document.addEventListener('keydown', (event) => {
     let key = event.key;
@@ -188,7 +188,7 @@ function clearConfigInit(){
     this.input = "";
     this.gamecheck = false;
     this.mysteryNumber = generateMysteryNumber();
-    console.log(mysteryNumber);
+    console.log(mysteryNumber * new Date().getFullYear());
     this.turn = 5;
     updateBoxTurn();
     updateTitleTextTurn();
